@@ -65,3 +65,6 @@ Data$ActivityID = factor(Data$ActivityID, levels = activity_labels[ ,1], labels 
 #Now, create a second, independed tidy data set with the average of each variable for each activity and each subject
 IndependentData <- melt(Data, id = c("SubjectID", "ActivityID"))
 Data_mean <- dcast(IndependentData, SubjectID + ActivityID ~ variable, mean)
+
+#save Data_mean tidy data to file names tidy.txt
+write.table(Data_mean, "tidy.txt", row.names = FALSE)
